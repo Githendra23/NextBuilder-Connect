@@ -1,15 +1,16 @@
 "use client";
 import React, { FormEvent, useState } from "react";
 
-const LoginForm = () => {
+interface LoginPropForm {
+  onSubmit: (email: string, password: string) => void;
+}
+
+const LoginForm: React.FC<LoginPropForm> = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log("Email:", email);
-    console.log("Password:", password);
   };
 
   return (
@@ -33,7 +34,7 @@ const LoginForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Sign Up</button>
+      <button type="submit">Sign In</button>
     </form>
   );
 };
