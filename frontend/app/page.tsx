@@ -1,11 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
 
-export default function Home() {
-  return (
-    <main>
-      <h1>Hello World</h1>
-      <Link href="/login">Login</Link>
-    </main>
-  );
-}
+const Home = () => {
+  redirect("/login");
+};
+
+export default Home;
