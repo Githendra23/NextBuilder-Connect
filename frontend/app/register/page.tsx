@@ -2,6 +2,7 @@
 import React from "react";
 import RegisterForm from "../components/RegisterForm";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const page = () => {
   const router = useRouter();
@@ -43,6 +44,13 @@ const page = () => {
       <h1>Register Page</h1>
 
       <RegisterForm onFormSubmit={handleFormSubmit} />
+
+      <Link
+        href="/login"
+        className="text-blue-300 hover:underline hover:underline-offset-5"
+      >
+        Already have an account?
+      </Link>
     </div>
   );
 };

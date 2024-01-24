@@ -2,8 +2,11 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
+  const router = useRouter();
+
   const saveJwtToCookie = (jwtToken: string) => {
     const expirationDate = new Date();
     expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour in milliseconds
@@ -32,7 +35,9 @@ const LoginPage = () => {
         return response.json();
       })
       .then((data) => {
-        saveJwtToCookie(data.token);
+        // saveJwtToCookie(data.token);
+
+        router.replace("/articles");
       })
       .catch((error) => {
         // Handle fetch error
@@ -46,7 +51,12 @@ const LoginPage = () => {
 
       <LoginForm onSubmit={handleSubmit} />
 
-      <Link href="/register">Register</Link>
+      <Link
+        href="/register"
+        className="text-blue-300 hover:underline hover:underline-offset-5"
+      >
+        I don't have an account
+      </Link>
     </div>
   );
 };
