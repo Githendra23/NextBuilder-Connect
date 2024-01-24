@@ -1,8 +1,11 @@
 "use client";
 import React from "react";
 import RegisterForm from "../components/RegisterForm";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
+
   const handleFormSubmit = async (
     name: string,
     surname: string,
@@ -27,8 +30,7 @@ const page = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Response data:", data.token);
-        // Handle the data as needed
+        router.replace("/login");
       })
       .catch((error) => {
         // Handle fetch error

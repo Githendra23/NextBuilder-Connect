@@ -4,6 +4,13 @@ import LoginForm from "../components/LoginForm";
 import Link from "next/link";
 
 const LoginPage = () => {
+  const saveJwtToCookie = (jwtToken: string) => {
+    const expirationDate = new Date();
+    expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour in milliseconds
+
+    document.cookie = `jwt=${jwtToken}; expires=${expirationDate.toUTCString()}; path=/;`;
+  };
+
   const handleSubmit = async (email: string, password: string) => {
     console.log({ email, password });
 
@@ -25,8 +32,7 @@ const LoginPage = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Response data:", data);
-        // Handle the data as needed
+        saveJwtToCookie(data.token);
       })
       .catch((error) => {
         // Handle fetch error
