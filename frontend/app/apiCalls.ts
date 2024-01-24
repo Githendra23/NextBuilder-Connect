@@ -1,6 +1,10 @@
 let connect : boolean = false;
 let errorMsg: {status: number, message: string};
 
+interface data {
+    token: string
+}
+
 export const register = async (name: string, surname: string, email: string, password: string) => {
     await fetch("http://localhost:8080/user/register", {
       method: "POST",
@@ -42,10 +46,11 @@ export const login = async (email: string, password: string) => {
         }
       })
       .then((data) => {
-        saveJwtToCookie(data.token);
+        // saveJwtToCookie(data.token);
 
         connect = true;
         errorMsg = {status: 200, message: ""};
+        console.log(errorMsg);
       });
 } 
 

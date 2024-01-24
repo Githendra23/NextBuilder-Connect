@@ -1,18 +1,19 @@
 "use client";
 import React, { FormEvent, useState } from "react";
+import { getError, isConnected, login } from "../apiCalls";
+import { useRouter } from "next/navigation";
 
-interface LoginPropForm {
-  onSubmit: (email: string, password: string) => void;
-}
-
-const LoginForm: React.FC<LoginPropForm> = ({ onSubmit }) => {
+const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    onSubmit(email, password);
+    await login(email, password);
+
+    if (isConnected()) router.replace("/articles");
   };
 
   return (
