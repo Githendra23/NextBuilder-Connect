@@ -1,48 +1,21 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LoginForm from "../components/LoginForm";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { getError, isConnected, login } from "../apiCalls";
 
 const LoginPage = () => {
   const router = useRouter();
-
-  const saveJwtToCookie = (jwtToken: string) => {
-    const expirationDate = new Date();
-    expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour in milliseconds
-
-    document.cookie = `jwt=${jwtToken}; expires=${expirationDate.toUTCString()}; path=/;`;
-  };
+  const [connect, setConnect] = useState(isConnected());
 
   const handleSubmit = async (email: string, password: string) => {
-    console.log({ email, password });
+    login(email, password);
+    setConnect(isConnected());
+    console.log(connect);
 
-    await fetch("http://localhost:8080/user/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          // Handle the error, you can throw an exception or handle it in another way
-          console.error(response.status);
-        }
-
-        // If you need to access the response body, you can do the following:
-        return response.json();
-      })
-      .then((data) => {
-        // saveJwtToCookie(data.token);
-
-        router.replace("/articles");
-      })
-      .catch((error) => {
-        // Handle fetch error
-        console.error(error);
-      });
+    if (connect) router.replace("/articles");
+    else console.log(getError());
   };
 
   return (
