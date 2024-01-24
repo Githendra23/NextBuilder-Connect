@@ -11,6 +11,8 @@ const LoginForm: React.FC<LoginPropForm> = ({ onSubmit }) => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    onSubmit(email, password);
   };
 
   return (
