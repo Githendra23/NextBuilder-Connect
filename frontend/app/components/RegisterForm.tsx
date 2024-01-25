@@ -25,76 +25,84 @@ const RegisterForm: React.FC = () => {
 
   return (
     <>
-      {error !== "" ? <h2>{error}</h2> : null}
+      {error !== "" ? (
+        <h2 className="items-center p-3 mb-4 w-full text-sm rounded-lg bg-red-50 text-red-400">
+          {error}
+        </h2>
+      ) : null}
 
-      <div className="bg-white flex flex-col items-center justify-center border border-transparent rounded-md px-20 py-10 w-auto h-auto shadow-lg">
+      <div>
         <form className="flex flex-col items-center" onSubmit={handleSubmit}>
-          <div className="flex flex-col">
-            <label>Name: </label>
-            <input
-              required
-              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
-              type="text"
-              name="name"
-              placeholder="Enter name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
+          <div>
+            <div className="flex flex-row flex-wrap">
+              <div className="flex flex-col sm:mr-3">
+                <label>Name: </label>
+                <input
+                  required
+                  className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                  type="text"
+                  name="name"
+                  placeholder="Enter name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
 
-          <div className="flex flex-col">
-            <label>Surname: </label>
-            <input
-              required
-              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
-              type="text"
-              name="name"
-              placeholder="Enter surname"
-              value={surname}
-              onChange={(e) => setSurname(e.target.value)}
-            />
-          </div>
+              <div className="flex flex-col">
+                <label>Surname: </label>
+                <input
+                  required
+                  className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                  type="text"
+                  name="name"
+                  placeholder="Enter surname"
+                  value={surname}
+                  onChange={(e) => setSurname(e.target.value)}
+                />
+              </div>
+            </div>
 
-          <div className="flex flex-col">
-            <label>Email: </label>
-            <input
-              required
-              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
-              type="email"
-              name="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+            <div className="flex flex-col">
+              <label>Email: </label>
+              <input
+                required
+                className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
-          <div className="flex flex-col">
-            <label>Password: </label>
-            <input
-              required
-              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="flex flex-col">
+              <label>Password: </label>
+              <input
+                required
+                className="mb-1 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <Link
+              href="/login"
+              className="text-blue-500 text-center hover:underline hover:underline-offset-5 mt-4"
+            >
+              Already have an account?
+            </Link>
           </div>
 
           <button
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700"
+            className="mt-5 bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700"
             type="submit"
           >
             Sign Up
           </button>
         </form>
-
-        <Link
-          href="/login"
-          className="text-blue-500 text-center hover:underline hover:underline-offset-5 mt-4"
-        >
-          Already have an account?
-        </Link>
       </div>
     </>
   );
