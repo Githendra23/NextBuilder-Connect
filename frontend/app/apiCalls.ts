@@ -1,40 +1,40 @@
 export const register = async (name: string, surname: string, email: string, password: string) => {
-    const response = await fetch("http://localhost:8080/user/register", {
-      method: "POST",
-      body: JSON.stringify({ name, surname, email, password }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+  const response = await fetch("http://localhost:8080/user/register", {
+    method: "POST",
+    body: JSON.stringify({ name, surname, email, password }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
 
-    const data = await response.json();
+  const data = await response.json();
 
-    return { response, data };
+  return { response, data };
 }
 
 export const login = async (email: string, password: string) => {
-    const saveJwtToCookie = (jwtToken: string) => {
-        const expirationDate = new Date();
-        expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour in milliseconds
-    
-        document.cookie = `jwt=${jwtToken}; expires=${expirationDate.toUTCString()}; path=/;`;
-    };
+  const saveJwtToCookie = (jwtToken: string) => {
+      const expirationDate = new Date();
+      expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour in milliseconds
+  
+      document.cookie = `jwt=${jwtToken}; expires=${expirationDate.toUTCString()}; path=/;`;
+  };
 
-    const response = await fetch("http://localhost:8080/user/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+  const response = await fetch("http://localhost:8080/user/login", {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
 
-    const data = await response.json();
+  const data = await response.json();
 
-    if (response.ok) saveJwtToCookie(data.token);
+  if (response.ok) saveJwtToCookie(data.token);
 
-    return { response, data };
+  return { response, data };
 }
 
 export const checkToken = async () => {
@@ -73,5 +73,5 @@ export const checkToken = async () => {
 };
 
 export const logout = () => {
-    document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 }
