@@ -54,7 +54,47 @@ export const login = async (email: string, password: string) => {
             errorMsg = { status: response.status, message: data.message };
         });
       });
-} 
+}
+
+export const checkToken = async () => {
+    const getJwtToken = () => {
+        const cookies = document.cookie.split(';');
+        for (const cookie of cookies) {
+          const [name, value] = cookie.trim().split('=');
+          if (name === 'jwt') {
+            return value;
+          }
+        }
+        return null;
+    };
+
+    const jwtToken = getJwtToken();
+
+    if (jwtToken) {
+      await fetch("http://localhost:8080/", {
+        method: "POST",
+        body: JSON.stringify({ token: jwtToken }),
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+            if (!response.ok) {
+                logout();
+            }
+
+            return response.json();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
+}
+
+export const logout = () => {
+    document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
 
 export const isConnected = () => {
     return connect;
