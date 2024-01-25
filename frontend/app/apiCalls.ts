@@ -1,6 +1,3 @@
-let connect : boolean = false;
-let errorMsg: {status: number, message: string};
-
 export const register = async (name: string, surname: string, email: string, password: string) => {
     const response = await fetch("http://localhost:8080/user/register", {
       method: "POST",
@@ -14,18 +11,6 @@ export const register = async (name: string, surname: string, email: string, pas
     const data = await response.json();
 
     return { response, data };
-      /* .then((response) => {
-        if (!response.ok) {
-            return response.json().then((data) => {
-                connect = false;
-                errorMsg = { status: response.status, message: data.message };
-            });
-        }
-
-        return response.json().then((data) => {
-            errorMsg = { status: response.status, message: data.message };
-        });
-      }) */
 }
 
 export const login = async (email: string, password: string) => {
@@ -47,12 +32,7 @@ export const login = async (email: string, password: string) => {
 
     const data = await response.json();
 
-    if (!response.ok) {
-        connect = false;
-    } else {
-        connect = true;
-        saveJwtToCookie(data.token);
-    }
+    if (response.ok) saveJwtToCookie(data.token);
 
     return { response, data };
 }
@@ -72,35 +52,26 @@ export const checkToken = async () => {
     const jwtToken = getJwtToken();
 
     if (jwtToken) {
-      await fetch("http://localhost:8080/", {
+      const response = await fetch("http://localhost:8080/", {
         method: "POST",
         body: JSON.stringify({ token: jwtToken }),
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-      })
-        .then((response) => {
-            if (!response.ok) {
-                logout();
-            }
+      });
+        
+      const data = await response.json();
 
-            return response.json();
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+      return { response, data };
     }
+
+    const response = { ok: false };
+    const data = {message: "JWT token is absent"}
+
+    return {response, data};
 }
 
 export const logout = () => {
     document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-}
-
-export const isConnected = () => {
-    return connect;
-}
-
-export const getResponse = () => {
-    return errorMsg;
 }

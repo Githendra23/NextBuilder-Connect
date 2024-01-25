@@ -1,6 +1,6 @@
 "use client";
 import React, { FormEvent, useState } from "react";
-import { getResponse, register } from "../apiCalls";
+import { register } from "../apiCalls";
 import { useRouter } from "next/navigation";
 
 const RegisterForm: React.FC = () => {

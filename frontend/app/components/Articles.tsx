@@ -19,23 +19,17 @@ const Articles = () => {
         "https://cdn.builder.io/api/v3/content/articles?apiKey=6e139f4f71454a88b3f01ee85b1a35b5"
       )
         .then((response) => {
-          if (!response.ok) {
-            // Handle the error, you can throw an exception or handle it in another way
-            console.error(response.status);
-          }
+          if (!response.ok) console.error(response.status);
 
-          // If you need to access the response body, you can do the following:
           return response.json();
         })
         .then((data) => {
           setArticles(data.results[0].data.articles);
         })
         .catch((error) => {
-          // Handle fetch error
           console.error(error);
         });
     };
-
     fetchData();
   }, []);
 
