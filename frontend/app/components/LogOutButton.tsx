@@ -13,7 +13,7 @@ const LogOutButton = () => {
 
   return (
     <button
-      className="bg-blue-500 m-2 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700"
+      className="bg-red-500 m-2 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-red-700"
       onClick={signout}
     >
       Logout

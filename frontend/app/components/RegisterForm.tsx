@@ -39,7 +39,7 @@ const RegisterForm: React.FC = () => {
                 <label>Name: </label>
                 <input
                   required
-                  className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                  className="mb-5 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
                   type="text"
                   name="name"
                   placeholder="Enter name"
@@ -48,11 +48,11 @@ const RegisterForm: React.FC = () => {
                 />
               </div>
 
-              <div className="flex flex-col">
+              <div>
                 <label>Surname: </label>
                 <input
                   required
-                  className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                  className="mb-5 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
                   type="text"
                   name="name"
                   placeholder="Enter surname"
@@ -62,11 +62,11 @@ const RegisterForm: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col">
+            <div>
               <label>Email: </label>
               <input
                 required
-                className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                className="mb-5 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
                 type="email"
                 name="email"
                 placeholder="Enter email"
@@ -75,11 +75,11 @@ const RegisterForm: React.FC = () => {
               />
             </div>
 
-            <div className="flex flex-col">
+            <div>
               <label>Password: </label>
               <input
                 required
-                className="mb-1 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                className="mb-1 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
                 type="password"
                 name="password"
                 placeholder="Enter password"
