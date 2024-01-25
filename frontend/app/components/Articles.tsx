@@ -36,10 +36,21 @@ const Articles = () => {
   return (
     <div>
       {articles.map((article) => (
-        <div key={article.article.id}>
-          <h2>{article.article.title}</h2>
-          <img src={article.article.image} alt={article.article.title} />
-          <p>{article.article.description}</p>
+        <div
+          className="flex flex-col justify-center items-center"
+          key={article.article.id}
+        >
+          <div className="flex flex-col justify-center items-center">
+            <h2>{article.article.title}</h2>
+            <img
+              className="h-72"
+              src={article.article.image}
+              alt={article.article.title}
+            />
+            <p className="mb-10 w-[40em] text-justify mx-2 mt-1">
+              {article.article.description}
+            </p>
+          </div>
         </div>
       ))}
     </div>

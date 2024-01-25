@@ -4,17 +4,12 @@ import Link from "next/link";
 
 const LoginPage = () => {
   return (
-    <div className="content-center">
-      <h1>Login Page</h1>
+    <div className="flex flex-col justify-center items-center h-[100vh] bg-gray-100">
+      <h1 className="text-3xl justify-center text-center font-bold mb-16">
+        Sign in to your account
+      </h1>
 
       <LoginForm />
-
-      <Link
-        href="/register"
-        className="text-blue-300 hover:underline hover:underline-offset-5"
-      >
-        I don't have an account
-      </Link>
     </div>
   );
 };

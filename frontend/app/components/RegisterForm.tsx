@@ -2,6 +2,7 @@
 import React, { FormEvent, useState } from "react";
 import { register } from "../apiCalls";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const RegisterForm: React.FC = () => {
   const [name, setName] = useState("");
@@ -23,52 +24,79 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       {error !== "" ? <h2>{error}</h2> : null}
 
-      <form onSubmit={handleSubmit}>
-        <label>Name: </label>
-        <input
-          required
-          type="text"
-          name="name"
-          placeholder="Enter name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+      <div className="bg-white flex flex-col items-center justify-center border border-transparent rounded-md px-20 py-10 w-auto h-auto shadow-lg">
+        <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+          <div className="flex flex-col">
+            <label>Name: </label>
+            <input
+              required
+              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+              type="text"
+              name="name"
+              placeholder="Enter name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
 
-        <label>Surname: </label>
-        <input
-          required
-          type="text"
-          name="name"
-          placeholder="Enter surname"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-        />
+          <div className="flex flex-col">
+            <label>Surname: </label>
+            <input
+              required
+              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+              type="text"
+              name="name"
+              placeholder="Enter surname"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+            />
+          </div>
 
-        <label>Email: </label>
-        <input
-          required
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <div className="flex flex-col">
+            <label>Email: </label>
+            <input
+              required
+              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        <label>Password: </label>
-        <input
-          required
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+          <div className="flex flex-col">
+            <label>Password: </label>
+            <input
+              required
+              className="mb-5 mt-2 pl-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700"
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </form>
+
+        <Link
+          href="/login"
+          className="text-blue-500 text-center hover:underline hover:underline-offset-5 mt-4"
+        >
+          Already have an account?
+        </Link>
+      </div>
+    </>
   );
 };
 

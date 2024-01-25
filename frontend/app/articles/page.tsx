@@ -25,10 +25,12 @@ const Page = () => {
   }, [router]);
 
   return (
-    <div>
+    <div className="bg-gray-100">
       {connect ? (
         <>
-          <h1>Articles</h1>
+          <h1 className="text-3xl justify-center text-center font-bold mb-16">
+            Articles
+          </h1>
           <Articles />
           <LogOutButton />
         </>

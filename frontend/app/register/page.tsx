@@ -1,20 +1,14 @@
 import React from "react";
 import RegisterForm from "../components/RegisterForm";
-import Link from "next/link";
 
 const page = () => {
   return (
-    <div>
-      <h1>Register Page</h1>
+    <div className="flex flex-col justify-center items-center h-[100vh] bg-gray-100">
+      <h1 className="text-3xl justify-center text-center font-bold mb-16">
+        Create your account
+      </h1>
 
       <RegisterForm />
-
-      <Link
-        href="/login"
-        className="text-blue-300 hover:underline hover:underline-offset-5"
-      >
-        Already have an account?
-      </Link>
     </div>
   );
 };
