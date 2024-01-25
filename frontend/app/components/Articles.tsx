@@ -34,22 +34,27 @@ const Articles = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-row flex-wrap justify-center">
       {articles.map((article) => (
         <div
-          className="flex flex-col justify-center items-center"
           key={article.article.id}
+          className="m-4 w-[48rem] bg-white border border-transparent rounded-sm shadow-lg"
         >
-          <div className="flex flex-col justify-center items-center">
-            <h2>{article.article.title}</h2>
-            <img
-              className="h-72"
-              src={article.article.image}
-              alt={article.article.title}
-            />
-            <p className="mb-10 w-[40em] text-justify mx-2 mt-1">
-              {article.article.description}
-            </p>
+          <div className="flex flex-col justify-center items-center h-full">
+            <div className="h-48 w-full relative">
+              <img
+                className="object-cover w-full h-full mb-3"
+                src={article.article.image}
+                alt={article.article.title}
+              />
+            </div>
+
+            <div className=" px-5">
+              <h2 className="mb-5 text-2xl">{article.article.title}</h2>
+              <p className="mb-10 w-full text-justify">
+                {article.article.description}
+              </p>
+            </div>
           </div>
         </div>
       ))}

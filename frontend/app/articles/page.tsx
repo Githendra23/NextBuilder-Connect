@@ -28,10 +28,13 @@ const Page = () => {
     <div className="bg-gray-100">
       {connect ? (
         <>
-          <h1 className="text-3xl justify-center text-center font-bold mb-16">
+          <h1 className="text-3xl justify-center text-center font-bold mb-16 pt-4">
             Articles
           </h1>
-          <Articles />
+
+          <div>
+            <Articles />
+          </div>
           <LogOutButton />
         </>
       ) : null}

@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
   return (
     <>
       {error !== "" ? (
-        <h2 className="items-center p-3 mb-4 text-sm rounded-lg bg-red-50 dark:text-red-400">
+        <h2 className="items-center p-3 mb-4 text-sm rounded-lg bg-red-50 text-red-400">
           {error}
         </h2>
       ) : null}

@@ -11,7 +11,14 @@ const LogOutButton = () => {
     router.replace("/login");
   };
 
-  return <button onClick={signout}>Logout</button>;
+  return (
+    <button
+      className="bg-blue-500 m-2 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700"
+      onClick={signout}
+    >
+      Logout
+    </button>
+  );
 };
 
 export default LogOutButton;
