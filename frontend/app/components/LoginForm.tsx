@@ -19,9 +19,7 @@ const LoginForm: React.FC = () => {
     if (response.ok) {
       setError("");
       router.replace("/articles");
-    } else {
-      setError(data.message);
-    }
+    } else setError(data.message);
   };
 
   return (
