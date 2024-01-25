@@ -11,11 +11,11 @@ const Page = () => {
 
   useEffect(() => {
     const checkConnection = async () => {
-      const { response } = await checkToken();
+      const { response, data } = await checkToken();
 
       if (!response.ok) {
-        router.replace("/login");
         setConnect(false);
+        router.replace("/login");
       } else {
         setConnect(true);
       }
@@ -26,13 +26,13 @@ const Page = () => {
 
   return (
     <div>
-      {connect && (
+      {connect ? (
         <>
           <h1>Articles</h1>
           <Articles />
           <LogOutButton />
         </>
-      )}
+      ) : null}
     </div>
   );
 };

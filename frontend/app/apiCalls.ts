@@ -38,39 +38,39 @@ export const login = async (email: string, password: string) => {
 }
 
 export const checkToken = async () => {
-    const getJwtToken = () => {
-        const cookies = document.cookie.split(';');
-        for (const cookie of cookies) {
-          const [name, value] = cookie.trim().split('=');
-          if (name === 'jwt') {
-            return value;
-          }
+  const getJwtToken = () => {
+      const cookies = document.cookie.split(';');
+      for (const cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'jwt') {
+          return value;
         }
-        return null;
-    };
+      }
+      return null;
+  };
 
-    const jwtToken = getJwtToken();
+  const jwtToken = getJwtToken();
 
-    if (jwtToken) {
-      const response = await fetch("http://localhost:8080/", {
-        method: "POST",
-        body: JSON.stringify({ token: jwtToken }),
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-      });
-        
-      const data = await response.json();
+  if (jwtToken) {
+    const response = await fetch("http://localhost:8080/verifyToken", {
+      method: "POST",
+      body: JSON.stringify({ token: jwtToken }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
 
-      return { response, data };
-    }
+    const data = await response.json();
 
-    const response = { ok: false };
-    const data = {message: "JWT token is absent"}
+    return { response, data };
+  }
 
-    return {response, data};
-}
+  const response = { ok: false };
+  const data = { message: "JWT token is absent" };
+
+  return { response, data };
+};
 
 export const logout = () => {
     document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
