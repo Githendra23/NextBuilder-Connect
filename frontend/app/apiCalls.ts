@@ -1,10 +1,6 @@
 let connect : boolean = false;
 let errorMsg: {status: number, message: string};
 
-interface data {
-    token: string
-}
-
 export const register = async (name: string, surname: string, email: string, password: string) => {
     await fetch("http://localhost:8080/user/register", {
       method: "POST",
@@ -16,11 +12,16 @@ export const register = async (name: string, surname: string, email: string, pas
     })
       .then((response) => {
         if (!response.ok) {
-          errorMsg = {status: response.status, message: response.statusText};
+            return response.json().then((data) => {
+                connect = false;
+                errorMsg = { status: response.status, message: data.message };
+            });
         }
 
-        errorMsg = {status: response.status, message: response.statusText};
-      });
+        return response.json().then((data) => {
+            errorMsg = { status: response.status, message: data.message };
+        });
+      })
 }
 
 export const login = async (email: string, password: string) => {
@@ -29,7 +30,7 @@ export const login = async (email: string, password: string) => {
         expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour in milliseconds
     
         document.cookie = `jwt=${jwtToken}; expires=${expirationDate.toUTCString()}; path=/;`;
-      };
+    };
 
     await fetch("http://localhost:8080/user/login", {
       method: "POST",
@@ -41,16 +42,17 @@ export const login = async (email: string, password: string) => {
     })
       .then((response) => {
         if (!response.ok) {
-            connect = false;
-            errorMsg = {status: response.status, message: response.statusText}
+            return response.json().then((data) => {
+                connect = false;
+                errorMsg = { status: response.status, message: data.message };
+            });
         }
-      })
-      .then((data) => {
-        // saveJwtToCookie(data.token);
 
-        connect = true;
-        errorMsg = {status: 200, message: ""};
-        console.log(errorMsg);
+        return response.json().then((data) => {
+            connect = true;
+            saveJwtToCookie(data.token);
+            errorMsg = { status: response.status, message: data.message };
+        });
       });
 } 
 
@@ -58,6 +60,6 @@ export const isConnected = () => {
     return connect;
 }
 
-export const getError = () => {
+export const getResponse = () => {
     return errorMsg;
 }

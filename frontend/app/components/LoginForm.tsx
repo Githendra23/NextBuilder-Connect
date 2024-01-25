@@ -1,6 +1,6 @@
 "use client";
 import React, { FormEvent, useState } from "react";
-import { getError, isConnected, login } from "../apiCalls";
+import { isConnected, login } from "../apiCalls";
 import { useRouter } from "next/navigation";
 
 const LoginForm: React.FC = () => {

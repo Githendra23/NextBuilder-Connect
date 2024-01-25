@@ -1,25 +1,23 @@
 "use client";
 import React, { FormEvent, useState } from "react";
+import { getResponse, register } from "../apiCalls";
+import { useRouter } from "next/navigation";
 
-interface RegisterFormProps {
-  onFormSubmit: (
-    name: string,
-    surname: string,
-    email: string,
-    password: string
-  ) => void;
-}
-
-const RegisterForm: React.FC<RegisterFormProps> = ({ onFormSubmit }) => {
+const RegisterForm: React.FC = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    onFormSubmit(name, surname, email, password);
+    await register(name, surname, email, password);
+
+    if (getResponse().status == 200) {
+      router.replace("/login");
+    }
   };
 
   return (
