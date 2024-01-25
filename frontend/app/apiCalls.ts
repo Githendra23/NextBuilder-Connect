@@ -2,15 +2,19 @@ let connect : boolean = false;
 let errorMsg: {status: number, message: string};
 
 export const register = async (name: string, surname: string, email: string, password: string) => {
-    await fetch("http://localhost:8080/user/register", {
+    const response = await fetch("http://localhost:8080/user/register", {
       method: "POST",
       body: JSON.stringify({ name, surname, email, password }),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
+    });
+
+    const data = await response.json();
+
+    return { response, data };
+      /* .then((response) => {
         if (!response.ok) {
             return response.json().then((data) => {
                 connect = false;
@@ -21,7 +25,7 @@ export const register = async (name: string, surname: string, email: string, pas
         return response.json().then((data) => {
             errorMsg = { status: response.status, message: data.message };
         });
-      })
+      }) */
 }
 
 export const login = async (email: string, password: string) => {
@@ -32,28 +36,25 @@ export const login = async (email: string, password: string) => {
         document.cookie = `jwt=${jwtToken}; expires=${expirationDate.toUTCString()}; path=/;`;
     };
 
-    await fetch("http://localhost:8080/user/login", {
+    const response = await fetch("http://localhost:8080/user/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
-        if (!response.ok) {
-            return response.json().then((data) => {
-                connect = false;
-                errorMsg = { status: response.status, message: data.message };
-            });
-        }
+    });
 
-        return response.json().then((data) => {
-            connect = true;
-            saveJwtToCookie(data.token);
-            errorMsg = { status: response.status, message: data.message };
-        });
-      });
+    const data = await response.json();
+
+    if (!response.ok) {
+        connect = false;
+    } else {
+        connect = true;
+        saveJwtToCookie(data.token);
+    }
+
+    return { response, data };
 }
 
 export const checkToken = async () => {
