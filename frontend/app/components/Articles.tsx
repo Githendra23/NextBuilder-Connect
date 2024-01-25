@@ -38,23 +38,22 @@ const Articles = () => {
       {articles.map((article) => (
         <div
           key={article.article.id}
-          className="m-4 w-[48rem] bg-white border border-transparent rounded-sm shadow-lg"
+          className="m-4 w-[48rem] bg-white border border-transparent rounded-md shadow-lg flex flex-col items-center"
         >
-          <div className="flex flex-col justify-center items-center h-full">
-            <div className="h-48 w-full relative">
-              <img
-                className="object-cover w-full h-full mb-3"
-                src={article.article.image}
-                alt={article.article.title}
-              />
-            </div>
+          <div className="h-96 w-full">
+            <img
+              className="object-cover w-full h-full mb-3 rounded-t-md"
+              src={article.article.image}
+              alt={article.article.title}
+            />
+          </div>
 
-            <div className=" px-5">
-              <h2 className="mb-5 text-2xl">{article.article.title}</h2>
-              <p className="mb-10 w-full text-justify">
-                {article.article.description}
-              </p>
-            </div>
+          <div className="pt-2 px-5">
+            <h2 className="mb-5 text-2xl">{article.article.title}</h2>
+
+            <p className="mb-10 w-full text-justify">
+              {article.article.description}
+            </p>
           </div>
         </div>
       ))}

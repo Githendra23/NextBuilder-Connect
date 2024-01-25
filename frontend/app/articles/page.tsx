@@ -28,7 +28,7 @@ const Page = () => {
     <div className="bg-gray-100">
       {connect ? (
         <>
-          <h1 className="text-3xl justify-center text-center font-bold mb-16 pt-4">
+          <h1 className="text-3xl justify-center text-center font-bold mb-4 pt-8">
             Articles
           </h1>
 
