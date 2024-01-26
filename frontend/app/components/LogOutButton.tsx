@@ -7,7 +7,7 @@ const LogOutButton = () => {
   const router = useRouter();
 
   const signout = () => {
-    logout;
+    logout();
     router.replace("/login");
   };
 

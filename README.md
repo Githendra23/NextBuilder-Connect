@@ -36,6 +36,10 @@ Vous devez voir le logo WAMP en bas à droite ; attendez jusqu'à ce qu'il devie
 
 ![rectangle](https://github.com/Githendra23/NextBuilder-Connect/assets/51377697/195adc12-f300-4df8-b535-84f50af1061f)
 
+Téléchargez le projet :
+```cmd
+git clone https://github.com/Githendra23/NextBuilder-Connect.git
+```
 Puis, ouvrez le fichier "**db_app.mwb**" situé dans le dossier *backend/db*.
 
 En cliquant sur le fichier, vous allez ouvrir le logiciel MySQL Workbench. Dans le logiciel, cliquez sur *Database -> Forward engineer...* dans la barre de menu.
