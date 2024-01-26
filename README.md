@@ -34,7 +34,7 @@ Après avoir installé ces trois logiciels, démarrez le logiciel WAMP SERVER po
 
 Vous devez voir le logo WAMP en bas à droite ; attendez jusqu'à ce qu'il devienne vert. (Si le logo ne devient pas vert, cliquez dessus et redémarrez ses services.)
 
-![image](https://github.com/Githendra23/NextBuilder-Connect/assets/51377697/98017f2c-2037-47e2-bebc-b16fea2025a9)
+![rectangle](https://github.com/Githendra23/NextBuilder-Connect/assets/51377697/195adc12-f300-4df8-b535-84f50af1061f)
 
 Puis, ouvrez le fichier "**db_app.mwb**" situé dans le dossier *backend/db*.
 
