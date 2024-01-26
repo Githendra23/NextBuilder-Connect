@@ -19,7 +19,7 @@ const RegisterForm: React.FC = () => {
 
     if (response.ok) {
       setError("");
-      router.replace("/login");
+      router.replace("/login?registered");
     } else setError(data.message);
   };
 
