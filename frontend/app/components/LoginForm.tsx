@@ -1,17 +1,23 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { login } from "../apiCalls";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isRegister, setIsRegister] = useState(false);
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  console.log(isRegister);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    setIsRegister(false);
 
     const { response, data } = await login(email, password);
 
@@ -21,11 +27,22 @@ const LoginForm: React.FC = () => {
     } else setError(data.message);
   };
 
+  useEffect(() => {
+    if (searchParams.get("registered") !== null) {
+      setIsRegister(true);
+      router.replace("/login");
+    }
+  });
+
   return (
     <>
       {error !== "" ? (
         <h2 className="items-center p-3 mb-4 w-full md:text-sm text-xs rounded-lg bg-red-50 text-red-400">
           {error}
+        </h2>
+      ) : isRegister ? (
+        <h2 className="items-center p-3 mb-4 w-full md:text-sm text-xs rounded-lg bg-green-50 text-green-400">
+          Your account was created!
         </h2>
       ) : null}
 
