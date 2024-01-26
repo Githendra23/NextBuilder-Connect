@@ -26,7 +26,7 @@ const RegisterForm: React.FC = () => {
   return (
     <>
       {error !== "" ? (
-        <h2 className="items-center p-3 mb-4 w-full text-sm rounded-lg bg-red-50 text-red-400">
+        <h2 className="items-center p-3 mb-4 w-full md:text-sm text-xs rounded-lg bg-red-50 text-red-400">
           {error}
         </h2>
       ) : null}
@@ -34,12 +34,13 @@ const RegisterForm: React.FC = () => {
       <div>
         <form className="flex flex-col items-center" onSubmit={handleSubmit}>
           <div>
-            <div className="flex flex-row flex-wrap">
-              <div className="flex flex-col sm:mr-3">
-                <label>Name: </label>
+            <div className="sm:flex sm:flex-row">
+              <div className="sm:mr-3">
+                <label className="sm:text-base text-sm">Name:</label>
                 <input
                   required
-                  className="mb-5 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                  className="mb-5 mt-1 pl-2 pr-2 block rounded-md border-0 w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                  md:text-base md:h-10 sm:text-sm text-xs h-8"
                   type="text"
                   name="name"
                   placeholder="Enter name"
@@ -49,10 +50,11 @@ const RegisterForm: React.FC = () => {
               </div>
 
               <div>
-                <label>Surname: </label>
+                <label className="sm:text-base text-sm">Surname: </label>
                 <input
                   required
-                  className="mb-5 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                  className="mb-5 mt-1 pl-2 pr-2 block rounded-md border-0 w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                  md:text-base md:h-10 sm:text-sm text-xs h-8"
                   type="text"
                   name="name"
                   placeholder="Enter surname"
@@ -63,10 +65,11 @@ const RegisterForm: React.FC = () => {
             </div>
 
             <div>
-              <label>Email: </label>
+              <label className="md:text-base text-sm">Email: </label>
               <input
                 required
-                className="mb-5 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                className="mb-5 mt-1 pl-2 pr-2 block rounded-md border-0 w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                md:text-base md:h-10 ms:text-sm text-xs h-8"
                 type="email"
                 name="email"
                 placeholder="Enter email"
@@ -76,10 +79,11 @@ const RegisterForm: React.FC = () => {
             </div>
 
             <div>
-              <label>Password: </label>
+              <label className="md:text-base text-sm">Password: </label>
               <input
                 required
-                className="mb-1 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+                className="mb-1 mt-1 pl-2 pr-2 block rounded-md border-0 w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                md:text-base md:h-10 ms:text-sm text-xs h-8"
                 type="password"
                 name="password"
                 placeholder="Enter password"
@@ -90,14 +94,16 @@ const RegisterForm: React.FC = () => {
 
             <Link
               href="/login"
-              className="text-blue-500 text-center hover:underline hover:underline-offset-5 mt-4"
+              className="text-blue-500 text-center hover:underline hover:underline-offset-5
+              md:text-base text-sm"
             >
               Already have an account?
             </Link>
           </div>
 
           <button
-            className="mt-5 bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700"
+            className="mt-5 bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700
+            md:text-base text-sm"
             type="submit"
           >
             Sign Up

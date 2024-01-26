@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
   return (
     <>
       {error !== "" ? (
-        <h2 className="items-center p-3 mb-4 w-full text-sm rounded-lg bg-red-50 text-red-400">
+        <h2 className="items-center p-3 mb-4 w-full md:text-sm text-xs rounded-lg bg-red-50 text-red-400">
           {error}
         </h2>
       ) : null}
@@ -34,7 +34,8 @@ const LoginForm: React.FC = () => {
           <label>Email: </label>
           <input
             required
-            className="mb-5 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+            className="mb-5 mt-1 pl-2 pr-2 block rounded-md border-0 w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                md:text-base md:h-10 ms:text-sm text-xs h-8"
             type="email"
             name="email"
             placeholder="Enter email"
@@ -45,7 +46,8 @@ const LoginForm: React.FC = () => {
           <label>Password: </label>
           <input
             required
-            className="mb-1 mt-2 pl-2 pr-2 block rounded-md border-0 w-full h-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset"
+            className="mb-1 mt-1 pl-2 pr-2 block rounded-md border-0 w-full text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                md:text-base md:h-10 ms:text-sm text-xs h-8"
             type="password"
             name="password"
             placeholder="Enter password"
@@ -55,7 +57,8 @@ const LoginForm: React.FC = () => {
 
           <Link
             href="/register"
-            className="text-blue-500 text-center hover:underline hover:underline-offset-5 mt-4"
+            className="text-blue-500 text-center hover:underline hover:underline-offset-5
+              md:text-base text-sm"
           >
             I don't have an account
           </Link>
@@ -63,7 +66,8 @@ const LoginForm: React.FC = () => {
 
         <div className="flex justify-center items-center">
           <button
-            className="mt-5 bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700"
+            className="mt-5 bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700
+            md:text-base text-sm"
             type="submit"
           >
             Sign In
