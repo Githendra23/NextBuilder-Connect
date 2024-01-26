@@ -103,7 +103,7 @@ const RegisterForm: React.FC = () => {
 
           <button
             className="mt-5 bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue hover:bg-blue-700
-            md:text-base text-xs"
+            md:text-base sm:text-sm text-xs"
             type="submit"
           >
             Sign Up
