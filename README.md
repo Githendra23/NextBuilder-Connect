@@ -64,7 +64,7 @@ cd <chemin à l'intérieur du dossier "backend">
 
 Puis, executez :
 ```cmd
-node run
+node app.js
 ```
 
 Dans un autre terminal, accédez au dossier "**frontend**" et exécutez :
