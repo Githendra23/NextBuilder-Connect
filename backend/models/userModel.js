@@ -36,29 +36,24 @@ const User = sequelize.define('user', {
     tableName: 'user',
 });
 
-User.prototype.comparePassword = async function (password) 
-{
+User.prototype.comparePassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-User.prototype.hashPassword = async function (password)
-{
-  try
-  {
+User.prototype.hashPassword = async function (password) {
+  try {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     return hashedPassword;
   }
-  catch (error)
-  {
+  catch (error) {
     console.log(error);
   };
 };
 
 User.prototype.generateToken = function () {
-  try 
-  {
+  try {
     const token = jwt.sign(
       { id: this.id, email: this.email },
       secretKey,
@@ -67,20 +62,17 @@ User.prototype.generateToken = function () {
 
     return token;
   } 
-  catch (err) 
-  {
+  catch (err) {
     console.error(err);
     return null;
   }
 };
 
 User.prototype.getInfoFromToken = function (token) {
-  try 
-  {
+  try {
     const decoded = jwt.verify(token, secretKey);
 
-    if (decoded) 
-    {
+    if (decoded) {
       const id = decoded.id;
       const email = decoded.email;
 
@@ -89,8 +81,7 @@ User.prototype.getInfoFromToken = function (token) {
 
     return null;
   } 
-  catch (err) 
-  {
+  catch (err) {
     console.error(err);
     return null;
   }

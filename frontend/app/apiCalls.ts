@@ -8,7 +8,7 @@ export const register = async (name: string, surname: string, email: string, pas
     },
   });
 
-  const data = await response.json();
+  const data: { message: string } = await response.json();
 
   return { response, data };
 }
@@ -30,7 +30,7 @@ export const login = async (email: string, password: string) => {
     },
   });
 
-  const data = await response.json();
+  const data: { message: string, token: string } = await response.json();
 
   if (response.ok) saveJwtToCookie(data.token);
 
@@ -61,7 +61,7 @@ export const checkToken = async () => {
       },
     });
 
-    const data = await response.json();
+    const data: { message: string, id: number, email: string } = await response.json();
 
     return { response, data };
   }

@@ -9,8 +9,7 @@ router.post('/', async (req, res) => {
 
     if (!token) return res.status(401).json({ message: 'Token not provided' });
   
-    try 
-    {
+    try {
         const decoded = jwt.verify(token, secretKey);
 
         const currentTimestamp = Math.floor(Date.now() / 1000);
@@ -22,8 +21,7 @@ router.post('/', async (req, res) => {
 
         return res.status(200).json({ message: 'Token verified', id: user.id, email: user.email });
     } 
-    catch (error) 
-    {
+    catch (error) {
         console.error(error);
         return res.status(401).json({ message: 'Invalid token' });
     }
